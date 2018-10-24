@@ -25,11 +25,12 @@ const Database = require('./lib/database');
  * process working directory.
  * @param {Object} [driverConfig={}] - Pass configuration directly to
  * pg-promise.
+ * @param {*} [dc] - Pass database context to pg-promise.
  *
  * @return {Database} An initialized and connected data mapper.
  */
-module.exports = (connection, loader = {}, driverConfig = {}) => {
-  return (new Database(connection, loader, driverConfig)).reload();
+module.exports = (connection, loader = {}, driverConfig = {}, dc) => {
+  return (new Database(connection, loader, driverConfig, dc)).reload();
 };
 
 /**
